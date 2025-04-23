@@ -3,51 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EcoRide - Covoiturage écologique</title>
+  <title>EcoRide - Accueil</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Menu de navigation (US2) -->
   <header>
-    <div class="logo">
-      <h1>EcoRide</h1>
-      <p>Votre covoiturage écologique</p>
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo.png" alt="Logo EcoRide">
+        <h1>EcoRide</h1>
+        <p>Roulez vert, roulez ensemble 🌱</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="covoiturage.html">Covoiturages</a></li>
+          <li><a href="connexion.html">Connexion</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="covoiturage.html">Covoiturages</a></li>
-        <li><a href="connexion.html">Connexion</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
   </header>
 
+  <!-- Présentation de l’entreprise + image (US1) -->
   <section class="presentation">
-    <h2>Bienvenue sur EcoRide</h2>
-    <p>EcoRide est une startup créée en France visant à réduire l'impact environnemental des déplacements en encourageant le covoiturage. Nous souhaitons rendre le transport quotidien plus écologique et économique.</p>
-    <p>Notre mission est de devenir la plateforme de covoiturage préférée des voyageurs soucieux de l'environnement.</p>
+    <div class="texte">
+      <h2>Bienvenue chez EcoRide</h2>
+      <p>
+        🚗 EcoRide est une startup française née d'une envie forte : rendre les trajets quotidiens plus écologiques, plus solidaires et plus économiques. 
+        Grâce au covoiturage entre particuliers, nous réduisons les émissions de CO₂ tout en créant du lien entre les voyageurs.
+      </p>
+      <p>
+        🌍 Notre ambition est de devenir la plateforme n°1 du covoiturage écoresponsable en France.
+      </p>
+    </div>
+    <div class="image">
+      <img src="images/carpool.jpg" alt="Image de covoiturage écologique">
+    </div>
   </section>
 
-  <section class="search-form">
-    <h2>Trouvez votre trajet</h2>
-    <form action="#" id="search-form">
-      <label for="depart">Départ :</label>
-      <input type="text" id="depart" placeholder="Ville de départ" required>
-      <label for="arrivee">Arrivée :</label>
-      <input type="text" id="arrivee" placeholder="Ville d'arrivée" required>
-      <label for="date">Date :</label>
-      <input type="date" id="date" required>
+  <!-- Barre de recherche (US1) -->
+  <section class="recherche">
+    <h2>Trouvez votre itinéraire</h2>
+    <form action="covoiturage.html" method="get">
+      <input type="text" placeholder="Ville de départ" required>
+      <input type="text" placeholder="Ville d'arrivée" required>
+      <input type="date" required>
       <button type="submit">Rechercher</button>
     </form>
-    <div id="resultats"></div>
   </section>
 
+  <!-- Footer avec contact + mentions légales (US1) -->
   <footer>
-    <p>&copy; 2025 EcoRide. Tous droits réservés. | <a href="#">Mentions légales</a></p>
-    <p>Contactez-nous : <a href="mailto:contact@ecoride.com">contact@ecoride.com</a></p>
+    <p>📧 contact@ecoride.com</p>
+    <p><a href="#">Mentions légales</a></p>
+    <p>&copy; 2025 EcoRide - Tous droits réservés</p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>

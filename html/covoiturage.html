@@ -3,40 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Covoiturages - EcoRide</title>
+  <title>EcoRide - Covoiturages</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Menu global (US2) -->
   <header>
-    <div class="logo">
-      <h1>EcoRide</h1>
+    <div class="container">
+      <div class="logo">
+        <h1>EcoRide</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="covoiturage.html">Covoiturages</a></li>
+          <li><a href="connexion.html">Connexion</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="covoiturage.html">Covoiturages</a></li>
-        <li><a href="connexion.html">Connexion</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <section class="search-form">
-    <h2>Trouvez votre trajet</h2>
-    <form action="#" id="search-form">
-      <label for="depart">Départ :</label>
+  <!-- Formulaire de recherche (US3) -->
+  <section class="recherche">
+    <h2>Rechercher un covoiturage</h2>
+    <form id="search-form">
       <input type="text" id="depart" placeholder="Ville de départ" required>
-      <label for="arrivee">Arrivée :</label>
       <input type="text" id="arrivee" placeholder="Ville d'arrivée" required>
-      <label for="date">Date :</label>
       <input type="date" id="date" required>
       <button type="submit">Rechercher</button>
     </form>
-    <div id="resultats"></div>
   </section>
 
+  <!-- Filtres (US4) -->
+  <section class="filtres">
+    <h3>Filtres</h3>
+    <form id="filter-form">
+      <label><input type="checkbox" id="eco"> Trajets écologiques (voiture électrique)</label><br>
+      <label>Prix max : <input type="number" id="prixMax" placeholder="Ex : 20 €"></label><br>
+      <label>Durée max (min) : <input type="number" id="dureeMax" placeholder="Ex : 120"></label><br>
+      <label>Note minimale : <input type="number" id="noteMin" placeholder="Ex : 4"></label><br>
+    </form>
+  </section>
+
+  <!-- Résultats (US3 + US5) -->
+  <section class="resultats">
+    <h2>Trajets disponibles</h2>
+    <div id="resultats">
+      <!-- Les trajets s'afficheront ici via JS -->
+      <div class="trajet">
+        <h4>Jean (4.5⭐)</h4>
+        <p><strong>Départ :</strong> Lyon à 10h00<br>
+        <strong>Arrivée :</strong> Paris à 14h00<br>
+        <strong>Places :</strong> 2<br>
+        <strong>Prix :</strong> 18 €<br>
+        <strong>Écologique :</strong> ✅</p>
+        <a href="#" class="btn-detail">Détail</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 EcoRide. Tous droits réservés.</p>
+    <p>📧 contact@ecoride.com</p>
+    <p><a href="#">Mentions légales</a></p>
+    <p>&copy; 2025 EcoRide - Tous droits réservés</p>
   </footer>
 
   <script src="script.js"></script>

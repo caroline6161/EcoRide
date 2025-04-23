@@ -1,91 +1,264 @@
-/* Style général */
+.resultats .trajet {
+  background-color: #e8f5e9;
+  border-left: 4px solid #2e7d32;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+.resultats .btn-detail {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.resultats .btn-detail:hover {
+  background-color: #388e3c;
+}
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
+  background-color: #f4fdf7;
   color: #333;
 }
 
 header {
-  background-color: #4CAF50;
-  padding: 15px;
-  text-align: center;
+  background-color: #2e7d32;
   color: white;
+  padding: 20px;
 }
 
-header h1 {
-  margin: 0;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-header nav ul {
+nav ul {
   list-style: none;
   padding: 0;
+  margin-top: 10px;
 }
 
-header nav ul li {
-  display: inline;
-  margin-right: 20px;
+nav ul li {
+  display: inline-block;
+  margin: 0 15px;
 }
 
-header nav ul li a {
+nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
 }
 
-header nav ul li a:hover {
+nav ul li a:hover {
   text-decoration: underline;
 }
 
-section {
-  padding: 20px;
-  margin: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.presentation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #ffffff;
 }
 
-section h2 {
-  color: #4CAF50;
+.presentation .texte {
+  max-width: 50%;
 }
 
-.search-form {
-  margin-top: 30px;
+.presentation img {
+  max-width: 400px;
+  border-radius: 10px;
 }
 
-.search-form input,
-.search-form button {
-  width: 100%;
+.recherche {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.recherche form input,
+.recherche form button {
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
-.search-form button {
-  background-color: #4CAF50;
+.recherche button {
+  background-color: #4caf50;
+  border: none;
   color: white;
   cursor: pointer;
+  border-radius: 5px;
 }
 
-.search-form button:hover {
-  background-color: #45a049;
+.recherche button:hover {
+  background-color: #388e3c;
 }
 
 footer {
-  background-color: #333;
+  background-color: #1b5e20;
   color: white;
   text-align: center;
-  padding: 15px 0;
+  padding: 20px;
 }
 
 footer a {
-  color: #4CAF50;
+  color: #a5d6a7;
   text-decoration: none;
 }
 
 footer a:hover {
   text-decoration: underline;
+}
+.connexion {
+  text-align: center;
+  padding: 20px;
+}
+
+.connexion form {
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.connexion label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.connexion input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.connexion button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.connexion button:hover {
+  background-color: #388e3c;
+}
+
+.inscription-link {
+  margin-top: 15px;
+}
+
+.inscription-link a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.inscription-link a:hover {
+  text-decoration: underline;
+}
+.inscription {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #e8f5e9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.inscription h2 {
+  text-align: center;
+  color: #2e7d32;
+}
+
+.inscription form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inscription label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.inscription input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.inscription button {
+  margin-top: 15px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.inscription button:hover {
+  background-color: #388e3c;
+}
+
+.retour {
+  text-align: center;
+  margin-top: 15px;
+}
+.espace-utilisateur {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f4fdf7;
+  border-radius: 10px;
+}
+
+.espace-utilisateur h3 {
+  margin-top: 30px;
+  color: #2e7d32;
+}
+
+.espace-utilisateur form {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.espace-utilisateur label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.espace-utilisateur input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.espace-utilisateur button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.espace-utilisateur button:hover {
+  background-color: #388e3c;
 }

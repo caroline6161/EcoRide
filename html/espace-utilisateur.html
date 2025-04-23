@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace Utilisateur - EcoRide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>EcoRide</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="covoiturage.html">Covoiturages</a></li>
+          <li><a href="connexion.html">Connexion</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="espace-utilisateur">
+    <h2>Mon espace</h2>
+
+    <!-- Choix du rôle -->
+    <section class="choix-role">
+      <h3>Je suis :</h3>
+      <label><input type="checkbox" id="passager" /> Passager</label>
+      <label><input type="checkbox" id="chauffeur" /> Chauffeur</label>
+    </section>
+
+    <!-- Formulaire véhicule (si chauffeur) -->
+    <section id="form-chauffeur" style="display: none;">
+      <h3>Informations véhicule</h3>
+      <form id="vehicule-form">
+        <label for="plaque">Plaque d'immatriculation :</label>
+        <input type="text" id="plaque" required>
+
+        <label for="modele">Modèle :</label>
+        <input type="text" id="modele" required>
+
+        <label for="marque">Marque :</label>
+        <input type="text" id="marque" required>
+
+        <label for="couleur">Couleur :</label>
+        <input type="text" id="couleur" required>
+
+        <label for="places">Nombre de places disponibles :</label>
+        <input type="number" id="places" required>
+
+        <h4>Préférences :</h4>
+        <label><input type="checkbox"> Fumeur</label>
+        <label><input type="checkbox"> Animaux</label>
+        <label><input type="text" placeholder="Autres préférences" /></label>
+
+        <button type="submit">Enregistrer mon véhicule</button>
+      </form>
+    </section>
+
+    <!-- Formulaire trajet (US9) -->
+    <section id="form-trajet" style="display: none;">
+      <h3>Proposer un trajet</h3>
+      <form id="trajet-form">
+        <label for="depart">Adresse de départ :</label>
+        <input type="text" id="depart" required>
+
+        <label for="arrivee">Adresse d'arrivée :</label>
+        <input type="text" id="arrivee" required>
+
+        <label for="date">Date :</label>
+        <input type="date" id="date" required>
+
+        <label for="prix">Prix :</label>
+        <input type="number" id="prix" required>
+
+        <label for="vehicule">Nom du véhicule utilisé :</label>
+        <input type="text" id="vehicule" required>
+
+        <button type="submit">Publier le trajet</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>📧 contact@ecoride.com</p>
+    <p><a href="#">Mentions légales</a></p>
+    <p>&copy; 2025 EcoRide - Tous droits réservés</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
