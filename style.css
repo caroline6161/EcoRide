@@ -1,127 +1,94 @@
+/* style.css */
+
+/* Use the same font as in pages */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* General Reset and Base */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #f4fdf7;
+  background: linear-gradient(135deg, #70e1f5, #ffd194);
   color: #333;
+  min-height: 100vh;
 }
 
-.hero {
-  background-image: url("https://images.unsplash.com/photo-1603437873662-5d2c26dfd5d1?auto=format&fit=crop&w=1950&q=80");
-  background-size: cover;
-  background-position: center;
-  color: white;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.hero-content {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 40px;
-  border-radius: 10px;
-}
-
-.hero h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.3em;
-  margin-bottom: 20px;
-}
-
-.cta-btn {
-  background-color: #4caf50;
-  color: white;
-  padding: 12px 24px;
+/* Links */
+a {
+  color: #3aafa9;
   text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background 0.3s;
+  transition: color 0.3s ease;
 }
-
-.cta-btn:hover {
-  background-color: #388e3c;
-}
-
-/* NAVIGATION */
-.main-nav {
-  background-color: #2e7d32;
-  padding: 10px 0;
-  text-align: center;
-}
-
-.main-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.main-nav li {
-  display: inline-block;
-  margin: 0 15px;
-}
-
-.main-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.main-nav a:hover {
+a:hover, a:focus {
+  color: #17252a;
   text-decoration: underline;
 }
 
-/* SECTIONS */
-section {
-  padding: 60px 20px;
-  max-width: 800px;
-  margin: auto;
-}
-
-.search input, .search button {
-  padding: 12px;
-  margin: 10px 0;
-  width: 100%;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.search button {
-  background-color: #4caf50;
-  color: white;
+/* Buttons */
+button {
+  background-color: #17252a;
+  color: #def2f1;
   border: none;
-  font-weight: bold;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 10px rgba(23, 37, 42, 0.5);
+  transition: background-color 0.3s ease;
 }
 
-.search button:hover {
-  background-color: #2e7d32;
+button:hover, button:focus {
+  background-color: #3aafa9;
+  box-shadow: 0 6px 14px rgba(58, 175, 169, 0.7);
 }
 
-/* ANIMATION */
-.scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease-out;
+/* Form Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #3aafa9;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s;
 }
 
-.scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #17252a;
 }
 
-/* FOOTER */
-footer {
-  background-color: #1b5e20;
-  color: white;
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: #17252a;
+  margin-top: 0;
+}
+
+/* Utility Classes */
+.text-center {
   text-align: center;
-  padding: 20px;
 }
 
-footer a {
-  color: #a5d6a7;
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
+
+.shadow {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Add more shared styles here as needed for consistency across pages */

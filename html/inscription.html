@@ -1,51 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Inscription - EcoRide</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <div class="container">
-      <h1>EcoRide</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="covoiturage.html">Covoiturages</a></li>
-          <li><a href="connexion.html">Connexion</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <h2>Créer un compte</h2>
+  <form>
+    <label>Pseudo :</label>
+    <input type="text" placeholder="Choisissez un pseudo" required>
 
-  <main class="inscription">
-    <h2>Créer un compte</h2>
-    <p>🎉 En vous inscrivant, vous recevez <strong>20 crédits gratuits</strong> pour vos premiers trajets !</p>
-    <form id="inscription-form">
-      <label for="pseudo">Pseudo :</label>
-      <input type="text" id="pseudo" placeholder="Votre pseudo" required />
-      
-      <label for="email">Email :</label>
-      <input type="email" id="email" placeholder="Votre email" required />
-      
-      <label for="motdepasse">Mot de passe :</label>
-      <input type="password" id="motdepasse" placeholder="Votre mot de passe" required />
+    <label>Email :</label>
+    <input type="email" placeholder="Votre email" required>
 
-      <button type="submit">Créer un compte</button>
-    </form>
-    <p class="retour">Déjà inscrit ? <a href="connexion.html">Connectez-vous</a></p>
-  </main>
+    <label>Mot de passe :</label>
+    <input type="password" placeholder="Mot de passe sécurisé" required>
 
-  <footer>
-    <p>📧 contact@ecoride.com</p>
-    <p><a href="#">Mentions légales</a></p>
-    <p>&copy; 2025 EcoRide - Tous droits réservés</p>
-  </footer>
+    <button type="submit">S'inscrire</button>
+  </form>
 
-  <script src="script.js"></script>
+  <p>À l’inscription, vous recevez automatiquement 20 crédits.</p>
+  <p>Déjà inscrit ? <a href="connexion.html">Se connecter</a></p>
+
 </body>
 </html>

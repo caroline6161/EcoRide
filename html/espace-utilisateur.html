@@ -1,95 +1,323 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Espace Utilisateur - EcoRide</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EcoRide - Espace Utilisateur</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #70e1f5, #ffd194);
+      color: #17252a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #2b7a78;
+      color: #def2f1;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    }
+
+    header .logo {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+    }
+
+    header .logo svg {
+      width: 100%;
+      height: 100%;
+      fill: #def2f1;
+      filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .container {
+      display: flex;
+      flex-grow: 1;
+      max-width: 1200px;
+      margin: 2rem auto;
+      width: 90%;
+      gap: 2rem;
+    }
+
+    nav.sidebar {
+      background: #17252a;
+      color: #def2f1;
+      border-radius: 1rem;
+      padding: 1.5rem 1rem;
+      width: 220px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    nav.sidebar h2 {
+      margin: 0 0 1rem 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-align: center;
+      border-bottom: 1px solid #3aafa9;
+      padding-bottom: 0.5rem;
+      color: #3aafa9;
+    }
+
+    nav.sidebar a {
+      color: #def2f1;
+      text-decoration: none;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      display: block;
+    }
+
+    nav.sidebar a:hover,
+    nav.sidebar a.active {
+      background-color: #3aafa9;
+      color: #17252a;
+      box-shadow: 0 0 10px #25b3ac;
+    }
+
+    main.dashboard {
+      background: rgba(255,255,255,0.95);
+      border-radius: 1rem;
+      flex-grow: 1;
+      padding: 2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    main.dashboard h2 {
+      margin: 0 0 1rem 0;
+      font-weight: 700;
+      color: #264653;
+      font-size: 1.8rem;
+      text-align: center;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .welcome-message {
+      font-size: 1.3rem;
+      text-align: center;
+      color: #17252a;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1rem;
+      color: #17252a;
+    }
+
+    thead {
+      background-color: #3aafa9;
+      color: #def2f1;
+      font-weight: 700;
+    }
+
+    thead th {
+      padding: 12px 15px;
+      text-align: left;
+      border-radius: 1rem 1rem 0 0;
+    }
+
+    tbody tr {
+      background-color: #f0f9f8;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #d9f1ef;
+    }
+
+    tbody tr:hover {
+      background-color: #8dd3bc;
+      color: #17252a;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    tbody td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #cce9e6;
+    }
+
+    .btn {
+      background-color: #2b7a78;
+      color: #def2f1;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(43, 122, 120, 0.7);
+      transition: background-color 0.3s ease;
+      align-self: center;
+      max-width: 180px;
+      margin-top: 1rem;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background-color: #147164;
+      box-shadow: 0 6px 14px rgba(20, 113, 100, 0.9);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        width: 90%;
+        margin: 1rem auto;
+      }
+      nav.sidebar {
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        padding: 1rem 0.5rem;
+        border-radius: 1rem;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      nav.sidebar a {
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        white-space: nowrap;
+      }
+      main.dashboard {
+        padding: 1rem 1rem 2rem;
+      }
+      table thead, 
+      table tbody tr, 
+      table tbody td {
+        display: block;
+      }
+      table thead {
+        display:none;
+      }
+      table tbody tr {
+        margin-bottom: 1.2rem;
+        border-radius: 1rem;
+        background: #def2f1;
+        padding: 1rem;
+      }
+      table tbody td {
+        padding: 0.5rem 0;
+        border-bottom: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+      }
+      table tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 700;
+        color: #17252a;
+      }
+      .btn {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-
   <header>
-    <div class="container">
-      <h1>EcoRide</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="covoiturage.html">Covoiturages</a></li>
-          <li><a href="connexion.html">Connexion</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+    <div class="logo" aria-label="Logo EcoRide" role="img" title="EcoRide">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path d="M32 2C18 8 8 18 6 32c1 15 14 28 26 30 3-8 13-21 26-26C54 10 40 3 32 2z"/>
+      </svg>
     </div>
+    <h1>Espace Utilisateur</h1>
   </header>
 
-  <main class="espace-utilisateur">
-    <h2>Mon espace</h2>
+  <div class="container">
+    <nav class="sidebar" aria-label="Navigation utilisateur">
+      <h2>Menu</h2>
+      <a href="#" class="active" aria-current="page">Tableau de bord</a>
+      <a href="#">Mon Profil</a>
+      <a href="#">Mes Trajets</a>
+      <a href="#">Messages</a>
+      <a href="#">Paramètres</a>
+      <a href="#">Déconnexion</a>
+    </nav>
 
-    <!-- Choix du rôle -->
-    <section class="choix-role">
-      <h3>Je suis :</h3>
-      <label><input type="checkbox" id="passager" /> Passager</label>
-      <label><input type="checkbox" id="chauffeur" /> Chauffeur</label>
-    </section>
+    <main class="dashboard" role="main" tabindex="-1">
+      <div class="welcome-message" aria-live="polite">
+        Bonjour, <strong>Jean Dupont</strong> ! Bienvenue dans votre espace utilisateur.
+      </div>
 
-    <!-- Formulaire véhicule (si chauffeur) -->
-    <section id="form-chauffeur" style="display: none;">
-      <h3>Informations véhicule</h3>
-      <form id="vehicule-form">
-        <label for="plaque">Plaque d'immatriculation :</label>
-        <input type="text" id="plaque" required>
+      <section aria-label="Trajets à venir">
+        <h2>Mes Trajets à Venir</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Départ</th>
+              <th>Arrivée</th>
+              <th>Date</th>
+              <th>Heure</th>
+              <th>Places disponibles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr tabindex="0">
+              <td data-label="Départ">Paris</td>
+              <td data-label="Arrivée">Lyon</td>
+              <td data-label="Date">10 juillet 2024</td>
+              <td data-label="Heure">08:00</td>
+              <td data-label="Places disponibles">2</td>
+            </tr>
+            <tr tabindex="0">
+              <td data-label="Départ">Lille</td>
+              <td data-label="Arrivée">Paris</td>
+              <td data-label="Date">15 juillet 2024</td>
+              <td data-label="Heure">14:30</td>
+              <td data-label="Places disponibles">1</td>
+            </tr>
+            <tr tabindex="0">
+              <td data-label="Départ">Marseille</td>
+              <td data-label="Arrivée">Nice</td>
+              <td data-label="Date">20 juillet 2024</td>
+              <td data-label="Heure">09:00</td>
+              <td data-label="Places disponibles">3</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-        <label for="modele">Modèle :</label>
-        <input type="text" id="modele" required>
+      <button class="btn" type="button" aria-label="Ajouter un nouveau trajet">Ajouter un nouveau trajet</button>
+    </main>
+  </div>
 
-        <label for="marque">Marque :</label>
-        <input type="text" id="marque" required>
-
-        <label for="couleur">Couleur :</label>
-        <input type="text" id="couleur" required>
-
-        <label for="places">Nombre de places disponibles :</label>
-        <input type="number" id="places" required>
-
-        <h4>Préférences :</h4>
-        <label><input type="checkbox"> Fumeur</label>
-        <label><input type="checkbox"> Animaux</label>
-        <label><input type="text" placeholder="Autres préférences" /></label>
-
-        <button type="submit">Enregistrer mon véhicule</button>
-      </form>
-    </section>
-
-    <!-- Formulaire trajet (US9) -->
-    <section id="form-trajet" style="display: none;">
-      <h3>Proposer un trajet</h3>
-      <form id="trajet-form">
-        <label for="depart">Adresse de départ :</label>
-        <input type="text" id="depart" required>
-
-        <label for="arrivee">Adresse d'arrivée :</label>
-        <input type="text" id="arrivee" required>
-
-        <label for="date">Date :</label>
-        <input type="date" id="date" required>
-
-        <label for="prix">Prix :</label>
-        <input type="number" id="prix" required>
-
-        <label for="vehicule">Nom du véhicule utilisé :</label>
-        <input type="text" id="vehicule" required>
-
-        <button type="submit">Publier le trajet</button>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <p>📧 contact@ecoride.com</p>
-    <p><a href="#">Mentions légales</a></p>
-    <p>&copy; 2025 EcoRide - Tous droits réservés</p>
+  <footer role="contentinfo">
+    <p>Contactez-nous : <a href="mailto:contact@ecoride.com">contact@ecoride.com</a></p>
+    <p><a href="mentions_legales.html">Mentions légales</a></p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
+
