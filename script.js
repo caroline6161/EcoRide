@@ -1,23 +1,29 @@
-// script.js
+// Script JS pour EcoRide (exemples)
+// À compléter selon besoins
 
-// For this project, many pages are static or have inline scripts.
-// This file can be used for future shared JavaScript functionalities.
-
-// Example: smooth scroll for internal anchors (if any)
-document.addEventListener('DOMContentLoaded', () => {
-    const internalLinks = document.querySelectorAll('a[href^="#"]');
-    internalLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const target = document.getElementById(targetId);
-        if(target) {
-          target.scrollIntoView({behavior: 'smooth'});
-        }
-      });
+// Exemple : remplit la liste des trajets à venir s’il y a des données (pour acceuil.html)
+document.addEventListener('DOMContentLoaded', function () {
+  // Exemples de trajets à venir (remplace par des données dynamiques si besoin)
+  const trajets = [
+    // {
+    //   depart: "Paris", arrivee: "Lyon", date: "25/05/2025", heure: "08:00", chauffeur: "Alex"
+    // }
+  ];
+  const ul = document.getElementById('trajets-a-venir');
+  if (ul && trajets.length) {
+    ul.innerHTML = '';
+    trajets.forEach(trajet => {
+      ul.innerHTML += `<li><b>${trajet.depart}</b> → <b>${trajet.arrivee}</b> le ${trajet.date} à ${trajet.heure} (Chauffeur : ${trajet.chauffeur})</li>`;
     });
-  });
-  
-  // Additional shared JS logic can be added here as needed.
-  
-  
+  }
+
+  // Historique de covoiturages (à compléter pareil)
+  const historiques = [];
+  const histoUl = document.getElementById('historique-covoiturages');
+  if (histoUl && historiques.length) {
+    histoUl.innerHTML = '';
+    historiques.forEach(trajet => {
+      histoUl.innerHTML += `<li><b>${trajet.depart}</b> → <b>${trajet.arrivee}</b> le ${trajet.date}</li>`;
+    });
+  }
+});

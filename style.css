@@ -1,94 +1,156 @@
-/* style.css */
-
-/* Use the same font as in pages */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-/* General Reset and Base */
-* {
-  box-sizing: border-box;
-}
-
 body {
+  font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #70e1f5, #ffd194);
-  color: #333;
+  background: #f4f8f6;
+  color: #222;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-
-/* Links */
-a {
-  color: #3aafa9;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-a:hover, a:focus {
-  color: #17252a;
-  text-decoration: underline;
-}
-
-/* Buttons */
-button {
-  background-color: #17252a;
-  color: #def2f1;
-  border: none;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-  padding: 0.75rem 1rem;
-  box-shadow: 0 4px 10px rgba(23, 37, 42, 0.5);
-  transition: background-color 0.3s ease;
-}
-
-button:hover, button:focus {
-  background-color: #3aafa9;
-  box-shadow: 0 6px 14px rgba(58, 175, 169, 0.7);
-}
-
-/* Form Inputs */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="date"],
-input[type="time"],
-textarea {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 2px solid #3aafa9;
-  border-radius: 8px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: #17252a;
-}
-
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  color: #17252a;
-  margin-top: 0;
-}
-
-/* Utility Classes */
-.text-center {
+header {
+  background: #219e65;
+  color: #fff;
+  padding: 22px 0 12px 0;
   text-align: center;
 }
-
-.container {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+.logo-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 1.7em;
+  font-weight: bold;
 }
-
-.shadow {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.logo {
+  width: 48px;
+  height: 48px;
 }
-
-/* Add more shared styles here as needed for consistency across pages */
+nav {
+  background: #19784b;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 12px 0;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+nav a:hover, nav a.active {
+  color: #19784b;
+  background: #c8ffd4;
+}
+main {
+  flex: 1;
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 20px #0001;
+  padding: 32px;
+}
+h1 {
+  color: #219e65;
+  text-align: center;
+  margin-bottom: 1.1em;
+}
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-around;
+}
+.dashboard-card {
+  background: #ecfdf6;
+  border-radius: 14px;
+  box-shadow: 0 1px 6px #0001;
+  padding: 24px;
+  width: 280px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn-main {
+  background: #219e65;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 7px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-block;
+}
+.btn-main:hover {
+  background: #19784b;
+}
+.avatar-large {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #19784b;
+  margin-right: 18px;
+}
+.chauffeur-details {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 15px;
+}
+.infos-trajet p {
+  margin: 4px 0;
+}
+.trajet-eco {
+  color: #219e65;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.avis-zone {
+  margin: 28px 0;
+}
+.avis-zone h2 {
+  margin-bottom: 8px;
+}
+.avis {
+  background: #f0f5f2;
+  border-radius: 8px;
+  padding: 12px;
+}
+.details-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+}
+footer {
+  background: #19784b;
+  color: #fff;
+  text-align: center;
+  padding: 18px 10px;
+  font-size: 1em;
+  margin-top: 40px;
+}
+footer a {
+  color: #b9ffd2;
+  text-decoration: underline;
+  margin-left: 10px;
+  font-weight: bold;
+}
+@media (max-width: 900px) {
+  main { padding: 12px; }
+  .dashboard { flex-direction: column; align-items: center; }
+  .dashboard-card { width: 90%; }
+}
+@media (max-width: 600px) {
+  .logo-title { font-size: 1.1em; }
+  .logo { width: 32px; height: 32px; }
+  .dashboard-card { padding: 14px; }
+}

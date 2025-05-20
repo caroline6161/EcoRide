@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Inscription - EcoRide</title>
+  <title>Paiement - EcoRide</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f8f6; color: #222; min-height: 100vh; display: flex; flex-direction: column; }
@@ -18,8 +18,7 @@
     button { background: #219e65; color: #fff; border: none; padding: 12px; border-radius: 7px; font-size: 1em; font-weight: bold; cursor: pointer; margin-top: 5px; transition: background 0.2s; }
     button:hover { background: #19784b; }
     .info { margin-bottom: 18px; color: #3d3d3d; text-align: center; }
-    .link { text-align: center; margin-top: 10px; }
-    .link a { color: #19784b; text-decoration: underline; font-weight: bold; }
+    .credit { text-align: center; color: #19784b; font-weight: bold; margin-bottom: 20px; }
     footer { background: #19784b; color: #fff; text-align: center; padding: 18px 10px; font-size: 1em; margin-top: 40px; }
     footer a { color: #b9ffd2; text-decoration: underline; margin-left: 10px; font-weight: bold; }
     @media (max-width: 600px) { main { padding: 12px; } }
@@ -37,15 +36,16 @@
     <a href="connexion.html">Connexion</a>
   </nav>
   <main>
-    <h1>Créer un compte</h1>
-    <div class="info">Inscrivez-vous pour profiter du covoiturage écologique !<br>Vous recevrez 20 crédits à l'inscription.</div>
+    <h1>Paiement / Crédits</h1>
+    <div class="credit">Crédits disponibles : <span>20</span></div>
+    <div class="info">Achetez des crédits pour réserver ou proposer un covoiturage.</div>
     <form>
-      <input type="text" placeholder="Pseudo" required>
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Mot de passe sécurisé" required>
-      <button type="submit">S’inscrire</button>
+      <input type="number" min="1" max="100" step="1" placeholder="Nombre de crédits à acheter" required>
+      <input type="text" placeholder="Numéro de carte bancaire" required>
+      <input type="text" placeholder="MM/AA" required>
+      <input type="text" placeholder="CVC" required>
+      <button type="submit">Payer</button>
     </form>
-    <div class="link">Déjà un compte ? <a href="connexion.html">Connexion</a></div>
   </main>
   <footer>
     Contact : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a> &nbsp;|&nbsp;

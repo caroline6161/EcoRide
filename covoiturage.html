@@ -1,345 +1,87 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EcoRide - Recherche de Covoiturages</title>
+  <meta charset="UTF-8">
+  <title>Covoiturages - EcoRide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #70e1f5, #ffd194);
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      background-color: #2b7a78;
-      color: #def2f1;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    header .logo {
-      width: 64px;
-      height: 64px;
-      flex-shrink: 0;
-    }
-
-    header .logo svg {
-      width: 100%;
-      height: 100%;
-      fill: #def2f1;
-      filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
-    }
-
-    header h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin: 0;
-      flex-grow: 1;
-    }
-
-    main {
-      flex-grow: 1;
-      padding: 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    form.search-form {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 1rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      align-items: end;
-    }
-
-    form.search-form label {
-      font-weight: 600;
-      color: #17252a;
-      margin-bottom: 0.3rem;
-      display: block;
-    }
-
-    form.search-form input[type="text"],
-    form.search-form input[type="date"],
-    form.search-form input[type="time"] {
-      width: 100%;
-      padding: 0.5rem 0.75rem;
-      border: 2px solid #3aafa9;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: border-color 0.3s;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    form.search-form input[type="text"]:focus,
-    form.search-form input[type="date"]:focus,
-    form.search-form input[type="time"]:focus {
-      border-color: #17252a;
-      outline: none;
-    }
-
-    form.search-form button {
-      padding: 0.75rem 1rem;
-      background-color: #17252a;
-      color: #def2f1;
-      border: none;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(23, 37, 42, 0.5);
-      transition: background-color 0.3s ease;
-      grid-column: 1 / -1;
-      justify-self: center;
-      max-width: 230px;
-    }
-
-    form.search-form button:hover {
-      background-color: #3aafa9;
-      box-shadow: 0 6px 14px rgba(58, 175, 169, 0.7);
-    }
-
-    .rides-list {
-      background: rgba(255,255,255,0.9);
-      border-radius: 1rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .rides-list h2 {
-      color: #17252a;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
-      text-align: center;
-    }
-
-    .ride-item {
-      border-bottom: 1px solid #8dd3bc;
-      padding: 1rem 0;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .ride-item:last-child {
-      border-bottom: none;
-    }
-
-    .ride-details {
-      flex-grow: 1;
-      min-width: 220px;
-    }
-
-    .ride-details span {
-      display: inline-block;
-      margin-right: 1.2rem;
-      font-weight: 600;
-      color: #264653;
-    }
-
-    .ride-date, .ride-time {
-      font-weight: 600;
-      color: #2a9d8f;
-      min-width: 120px;
-      text-align: right;
-      margin-left: 1rem;
-    }
-
-    /* Message no results */
-    .no-results {
-      text-align: center;
-      font-style: italic;
-      color: #e76f51;
-      font-weight: 600;
-      padding: 1rem;
-    }
-
-    /* Footer */
-    footer {
-      background-color: #17252a;
-      color: #def2f1;
-      padding: 1rem 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      box-shadow: 0 -4px 6px rgba(0,0,0,0.15);
-      margin-top: auto;
-    }
-
-    footer a {
-      color: #3aafa9;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .ride-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .ride-date, .ride-time {
-        text-align: left;
-        margin-left: 0;
-        margin-top: 0.4rem;
-      }
-    }
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f8f6; color: #222; min-height: 100vh; display: flex; flex-direction: column; }
+    header { background: #219e65; color: #fff; padding: 22px 0 12px 0; text-align: center; }
+    nav { background: #19784b; display: flex; justify-content: center; gap: 40px; padding: 12px 0; }
+    nav a { color: #fff; text-decoration: none; font-weight: bold; transition: color 0.2s; }
+    nav a:hover { color: #c8ffd4; }
+    main { flex: 1; max-width: 900px; margin: 40px auto; background: #fff; border-radius: 20px; box-shadow: 0 2px 20px #0001; padding: 32px; }
+    h1 { color: #219e65; text-align: center; margin-bottom: 1.1em; }
+    .search-bar { margin-bottom: 32px; max-width: 550px; margin-left: auto; margin-right: auto; }
+    .search-bar form { display: flex; gap: 12px; flex-wrap: wrap; }
+    .search-bar input[type="text"], .search-bar input[type="date"] { padding: 10px; border: 1px solid #bbb; border-radius: 7px; font-size: 1em; outline: none; transition: border 0.2s; flex: 1 1 150px;}
+    .search-bar input:focus { border: 1.5px solid #219e65; }
+    .search-bar button { background: #219e65; color: #fff; border: none; padding: 12px; border-radius: 7px; font-size: 1em; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+    .search-bar button:hover { background: #19784b; }
+    .liste-covoiturages { display: flex; flex-direction: column; gap: 25px; }
+    .trajet { display: flex; align-items: center; justify-content: space-between; background: #ecfdf6; border-radius: 14px; box-shadow: 0 1px 6px #0001; padding: 20px; }
+    .trajet-info { display: flex; align-items: center; gap: 20px; }
+    .avatar { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; border: 3px solid #19784b; }
+    .trajet-details { display: flex; flex-direction: column; gap: 4px; }
+    .trajet-eco { color: #219e65; font-weight: bold; font-size: 0.96em; }
+    .trajet-boutons button { margin-left: 14px; background: #19784b; color: #fff; border: none; padding: 8px 18px; border-radius: 7px; font-weight: bold; cursor: pointer; }
+    .trajet-boutons button:hover { background: #219e65; }
+    .aucun { text-align: center; margin: 40px 0 0 0; color: #b13c15; font-size: 1.12em; }
+    @media (max-width: 700px) { .trajet { flex-direction: column; align-items: flex-start; } .trajet-boutons { margin-top: 12px; } }
+    footer { background: #19784b; color: #fff; text-align: center; padding: 18px 10px; font-size: 1em; margin-top: 40px; }
+    footer a { color: #b9ffd2; text-decoration: underline; margin-left: 10px; font-weight: bold; }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo" aria-label="Logo EcoRide" role="img" title="EcoRide">
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-        <path d="M32 2C18 8 8 18 6 32c1 15 14 28 26 30 3-8 13-21 26-26C54 10 40 3 32 2z"/>
-      </svg>
-    </div>
-    <h1>EcoRide - Recherche de Covoiturages</h1>
+    <div style="font-size:1.7em;font-weight:bold;">EcoRide</div>
+    <div>Le covoiturage écologique & économique</div>
   </header>
-
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="covoiturages.html">Covoiturages</a>
+    <a href="contact.html">Contact</a>
+    <a href="connexion.html">Connexion</a>
+  </nav>
   <main>
-    <form class="search-form" aria-label="Formulaire de recherche de covoiturages">
-      <div>
-        <label for="departure">Départ</label>
-        <input type="text" id="departure" name="departure" placeholder="Ville de départ" required />
-      </div>
-      <div>
-        <label for="arrival">Arrivée</label>
-        <input type="text" id="arrival" name="arrival" placeholder="Ville d'arrivée" required />
-      </div>
-      <div>
-        <label for="date">Date</label>
-        <input type="date" id="date" name="date" required />
-      </div>
-      <div>
-        <label for="time">Heure</label>
-        <input type="time" id="time" name="time" />
-      </div>
-      <button type="submit" aria-label="Rechercher les trajets">Rechercher</button>
-    </form>
-
-    <section class="rides-list" aria-live="polite" aria-label="Résultats de la recherche de trajets">
-      <h2>Résultats</h2>
-      <div id="resultsContainer">
-        <!-- Search results will appear here -->
-      </div>
+    <h1>Rechercher un covoiturage</h1>
+    <section class="search-bar">
+      <form>
+        <input type="text" placeholder="Ville de départ" required>
+        <input type="text" placeholder="Ville d’arrivée" required>
+        <input type="date" required>
+        <button type="submit">Rechercher</button>
+      </form>
     </section>
+    <div class="liste-covoiturages">
+      <!-- Exemple de covoiturage (à générer dynamiquement plus tard) -->
+      <div class="trajet">
+        <div class="trajet-info">
+          <img src="https://randomuser.me/api/portraits/men/31.jpg" class="avatar" alt="Chauffeur">
+          <div class="trajet-details">
+            <div><b>Chauffeur:</b> Alex - <span title="Note: 4.8/5">⭐ 4.8</span></div>
+            <div><b>Départ:</b> Paris, 08:00</div>
+            <div><b>Arrivée:</b> Lyon, 12:00</div>
+            <div><b>Date:</b> 25/05/2025</div>
+            <div><b>Places restantes:</b> 2</div>
+            <div><b>Prix:</b> 18 €</div>
+            <div class="trajet-eco">🚗 Voyage écologique (électrique)</div>
+          </div>
+        </div>
+        <div class="trajet-boutons">
+          <button>Détail</button>
+          <button>Participer</button>
+        </div>
+      </div>
+      <!-- Ajoute d'autres trajets ici -->
+      <div class="aucun">
+        Aucun covoiturage ne correspond à votre recherche.<br>Essayez une autre date ou destination.
+      </div>
+    </div>
   </main>
-
-  <footer role="contentinfo">
-    <p>Contactez-nous : <a href="mailto:contact@ecoride.com">contact@ecoride.com</a></p>
-    <p><a href="mentions_legales.html">Mentions légales</a></p>
+  <footer>
+    Contact : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a> &nbsp;|&nbsp;
+    <a href="mentions-legales.html">Mentions légales</a>
   </footer>
-
-  <script>
-    const rides = [
-      { id: 1, departure: 'Paris', arrival: 'Lyon', date: '2024-07-10', time: '08:00' },
-      { id: 2, departure: 'Marseille', arrival: 'Nice', date: '2024-07-11', time: '09:30' },
-      { id: 3, departure: 'Lille', arrival: 'Paris', date: '2024-07-12', time: '14:15' },
-      { id: 4, departure: 'Bordeaux', arrival: 'Toulouse', date: '2024-07-13', time: '07:45' },
-      { id: 5, departure: 'Strasbourg', arrival: 'Colmar', date: '2024-07-14', time: '13:00' },
-      { id: 6, departure: 'Lyon', arrival: 'Grenoble', date: '2024-07-15', time: '10:00' },
-      { id: 7, departure: 'Nice', arrival: 'Cannes', date: '2024-07-16', time: '12:30' },
-      { id: 8, departure: 'Toulouse', arrival: 'Bordeaux', date: '2024-07-17', time: '08:00' },
-      { id: 9, departure: 'Paris', arrival: 'Strasbourg', date: '2024-07-18', time: '11:00' }
-    ];
-
-    const form = document.querySelector('form.search-form');
-    const resultsContainer = document.getElementById('resultsContainer');
-
-    function formatDate(dateStr){
-      const opts = { year:'numeric', month:'long', day:'numeric' };
-      return new Date(dateStr).toLocaleDateString('fr-FR', opts);
-    }
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const depInput = form.departure.value.trim().toLowerCase();
-      const arrInput = form.arrival.value.trim().toLowerCase();
-      const dateInput = form.date.value;
-      const timeInput = form.time.value;
-
-      if(!depInput || !arrInput || !dateInput){
-        resultsContainer.innerHTML = '<p class="no-results">Veuillez remplir les champs départ, arrivée et date.</p>';
-        return;
-      }
-
-      const filteredRides = rides.filter(ride => {
-        const depMatch = ride.departure.toLowerCase().includes(depInput);
-        const arrMatch = ride.arrival.toLowerCase().includes(arrInput);
-        const dateMatch = ride.date === dateInput;
-        const timeMatch = timeInput ? ride.time >= timeInput : true; // ride time same or after input time
-
-        return depMatch && arrMatch && dateMatch && timeMatch;
-      });
-
-      if(filteredRides.length === 0){
-        resultsContainer.innerHTML = '<p class="no-results">Aucun trajet ne correspond à votre recherche.</p>';
-        return;
-      }
-
-      const fragment = document.createDocumentFragment();
-
-      filteredRides.forEach(ride => {
-        const rideDiv = document.createElement('div');
-        rideDiv.className = 'ride-item';
-
-        const detailsDiv = document.createElement('div');
-        detailsDiv.className = 'ride-details';
-        detailsDiv.innerHTML = `
-          <span>Départ : ${ride.departure}</span>
-          <span>Arrivée : ${ride.arrival}</span>
-        `;
-
-        const dateDiv = document.createElement('div');
-        dateDiv.className = 'ride-date';
-        dateDiv.textContent = formatDate(ride.date);
-
-        const timeDiv = document.createElement('div');
-        timeDiv.className = 'ride-time';
-        timeDiv.textContent = ride.time;
-
-        rideDiv.appendChild(detailsDiv);
-        rideDiv.appendChild(dateDiv);
-        rideDiv.appendChild(timeDiv);
-
-        fragment.appendChild(rideDiv);
-      });
-
-      resultsContainer.innerHTML = '';
-      resultsContainer.appendChild(fragment);
-    });
-
-    // Initial empty message
-    resultsContainer.innerHTML = '<p class="no-results">Veuillez remplir le formulaire et cliquer sur Rechercher.</p>';
-  </script>
 </body>
 </html>
-
