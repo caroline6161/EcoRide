@@ -84,7 +84,7 @@
     <form>
       <input type="email" placeholder="Email" required>
       <input type="password" placeholder="Mot de passe" required>
-      <button type="submit">Se connecter</button>
+      <button type="button" onclick="verifConnexion()">Se connecter</button>
     </form>
     <div class="link">Pas encore de compte ? <a href="inscription.html">Inscription</a></div>
   </main>
@@ -93,6 +93,19 @@
     <a href="mentions-legales.html">Mentions légales</a>
   </footer>
   <script>
+    <script>
+  function verifConnexion() {
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    if (email === "admin@ecoride.fr" && password === "Admin1234") {
+      window.location.href = "admin.html";
+    } else {
+      alert("Identifiants incorrects ou utilisateur classique");
+      // Redirige vers l’espace utilisateur ou autre selon ton projet
+      // window.location.href = "espace-utilisateur.html";
+    }
+  }
+</script>
     function toggleMenu() {
       document.getElementById('dropdownMenu').classList.toggle('show');
     }
