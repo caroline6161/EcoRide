@@ -142,31 +142,67 @@
       .avatar-large { width: 60px; height: 60px; }
       .details-actions { flex-direction: column; gap: 10px; align-items: stretch; }
     }
+    /* --- MENU 3 POINTS --- */
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      z-index: 1000;
+    }
+    .menu-btn {
+      background: none;
+      border: none;
+      font-size: 32px;
+      color: #fff; /* bouton trois points en blanc */
+      cursor: pointer;
+      outline: none;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      min-width: 170px;
+      margin-top: 10px;
+    }
+    .dropdown-menu a {
+      display: block;
+      color: #219e65;
+      padding: 12px 18px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s, color 0.2s;
+    }
+    .dropdown-menu a:hover {
+      background: #f2f2f2;
+      color: #19784b;
+    }
+    .show {
+      display: block;
+    }
   </style>
 </head>
 <body>
-  <nav>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="covoiturage.html">Covoiturage</a></li>
-    <li><a href="connexion.html">Connexion</a></li>
-    <li><a href="inscription.html">Inscription</a></li>
-    <li><a href="espace-utilisateur.html">Espace utilisateur</a></li>
-  </ul>
-</nav>
+  <!-- MENU 3 POINTS EN HAUT À DROITE -->
+  <div class="menu-container">
+    <button class="menu-btn" onclick="toggleMenu()">&#x22ee;</button>
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a href="index.html">Accueil</a>
+      <a href="covoiturages.html">Covoiturages</a>
+      <a href="espace-utilisateur.html">Mon profil</a>
+      <a href="contact.html">Contact</a>
+      <a href="connexion.html">Déconnexion</a>
+      <a href="paiement.html">Acheter des crédits</a>
+    </div>
+  </div>
   <div class="details-banner">
     <img src="https://th.bing.com/th/id/OIP.mlmE5rYFfDiZok-MEz2BlwAAAA?cb=iwc2&rs=1&pid=ImgDetMain" alt="EcoRide Logo" class="logo">
     <h1>Détail du covoiturage</h1>
     <div>Retrouvez toutes les informations sur ce trajet</div>
   </div>
-  <nav>
-    <a href="acceuil.html">Accueil</a>
-    <a href="covoiturages.html">Covoiturages</a>
-    <a href="espace-utilisateur.html">Mon profil</a>
-    <a href="contact.html">Contact</a>
-    <a href="connexion.html">Déconnexion</a>
-  </nav>
   <main>
     <section class="details-covoiturage">
       <div class="chauffeur-details">
@@ -204,6 +240,23 @@
     Contact : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a> &nbsp;|&nbsp;
     <a href="mentions-legales.html">Mentions légales</a>
   </footer>
+  <script>
+    function toggleMenu() {
+      document.getElementById('dropdownMenu').classList.toggle('show');
+    }
+    // Ferme le menu si on clique ailleurs
+    window.onclick = function(event) {
+      if (!event.target.matches('.menu-btn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-menu");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>

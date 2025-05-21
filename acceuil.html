@@ -2,155 +2,112 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Accueil Utilisateur - EcoRide</title>
+  <title>Connexion - EcoRide</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
   <style>
-    /* Styles spécifiques pour l'accueil utilisateur */
-    body {
-      background: linear-gradient(135deg, #E0FFEF 0%, #B6FFCE 100%);
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f8f6; color: #222; min-height: 100vh; display: flex; flex-direction: column; }
+    header { background: #219e65; color: #fff; padding: 22px 0 12px 0; text-align: center; }
+    main { flex: 1; max-width: 400px; margin: 40px auto; background: #fff; border-radius: 20px; box-shadow: 0 2px 20px #0001; padding: 32px; }
+    h1 { color: #219e65; text-align: center; margin-bottom: 1.1em; }
+    form { display: flex; flex-direction: column; gap: 18px; }
+    input { padding: 10px; border: 1px solid #bbb; border-radius: 7px; font-size: 1em; outline: none; transition: border 0.2s; }
+    input:focus { border: 1.5px solid #219e65; }
+    button { background: #219e65; color: #fff; border: none; padding: 12px; border-radius: 7px; font-size: 1em; font-weight: bold; cursor: pointer; margin-top: 5px; transition: background 0.2s; }
+    button:hover { background: #19784b; }
+    .link { text-align: center; margin-top: 10px; }
+    .link a { color: #19784b; text-decoration: underline; font-weight: bold; }
+    footer { background: #19784b; color: #fff; text-align: center; padding: 18px 10px; font-size: 1em; margin-top: 40px; }
+    footer a { color: #b9ffd2; text-decoration: underline; margin-left: 10px; font-weight: bold; }
+    @media (max-width: 600px) { main { padding: 12px; } }
+    /* --- MENU 3 POINTS --- */
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      z-index: 1000;
     }
-    .user-welcome-banner {
-      background: #219e65;
-      color: #fff;
-      text-align: center;
-      padding: 38px 0 30px 0;
-      border-bottom-left-radius: 52px;
-      border-bottom-right-radius: 30px;
-      box-shadow: 0 4px 16px #0001;
+    .menu-btn {
+      background: none;
+      border: none;
+      font-size: 32px;
+      color: #fff; /* bouton trois points en blanc */
+      cursor: pointer;
+      outline: none;
     }
-    .user-welcome-banner .logo {
-      width: 70px;
-      margin-bottom: 15px;
-      filter: drop-shadow(0 8px 10px #19784b44);
-    }
-    .user-welcome-banner h1 {
-      font-size: 2.6em;
-      margin: 0.2em 0 0.2em 0;
-    }
-    .user-welcome-banner p {
-      font-size: 1.3em;
-      color: #d1ffe2;
-    }
-    .user-dashboard {
-      margin-top: -40px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 38px;
-      justify-content: center;
-      padding: 24px 0;
-    }
-    .user-card {
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
       background: #fff;
-      border-radius: 22px;
-      box-shadow: 0 3px 24px #19784b18;
-      padding: 32px 36px;
-      min-width: 240px;
-      max-width: 350px;
-      margin: 0 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      min-width: 170px;
+      margin-top: 10px;
     }
-    .user-card h2 {
+    .dropdown-menu a {
+      display: block;
       color: #219e65;
-      font-size: 1.3em;
-      margin-bottom: 12px;
-    }
-    .dashboard-actions {
-      margin-top: 18px;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .dashboard-actions a {
-      background: #19784b;
-      color: #fff;
-      padding: 11px 20px;
-      border-radius: 7px;
-      box-shadow: 0 1px 6px #0001;
-      font-weight: bold;
+      padding: 12px 18px;
       text-decoration: none;
-      transition: background 0.2s;
-    }
-    .dashboard-actions a:hover {
-      background: #46b48a;
-      color: #fff;
-    }
-    .credits-badge {
-      background: #219e65;
-      color: #fff;
-      padding: 11px 18px;
-      border-radius: 30px;
-      font-size: 1.1em;
       font-weight: bold;
-      margin-bottom: 8px;
-      box-shadow: 0 1px 6px #19784b22;
-      letter-spacing: 1px;
+      transition: background 0.2s, color 0.2s;
     }
-    @media (max-width: 1800px) {
-      .user-dashboard { flex-direction: column; align-items: center; }
-      .user-card { width: 90%; min-width: 0; }
+    .dropdown-menu a:hover {
+      background: #f2f2f2;
+      color: #19784b;
     }
-    @media (max-width: 1200px) {
-      .user-welcome-banner { padding: 60px 0 32px 0; }
-      .user-card { padding: 32px 24px; }
+    .show {
+      display: block;
     }
   </style>
 </head>
 <body>
-  <nav>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="covoiturage.html">Covoiturage</a></li>
-    <li><a href="connexion.html">Connexion</a></li>
-    <li><a href="inscription.html">Inscription</a></li>
-    <li><a href="espace-utilisateur.html">Espace utilisateur</a></li>
-  </ul>
-</nav>
-  <div class="user-welcome-banner">
-    <img src="https://th.bing.com/th/id/OIP.mlmE5rYFfDiZok-MEz2BlwAAAA?cb=iwc2&rs=1&pid=ImgDetMain" alt="EcoRide Logo" class="logo">
-    <h1>Bienvenue!</h1>
-    <p>Voici votre espace personnel sur EcoRide.<br>
-      Consultez vos trajets, crédits et tout votre historique de covoiturage.</p>
+  <!-- MENU 3 POINTS EN HAUT À DROITE -->
+  <div class="menu-container">
+    <button class="menu-btn" onclick="toggleMenu()">&#x22ee;</button>
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a href="index.html">Accueil</a>
+      <a href="covoiturages.html">Covoiturages</a>
+      <a href="contact.html">Contact</a>
+      <a href="connexion.html">Connexion</a>
+      <a href="inscription.html">Inscription</a>
+      <a href="espace-utilisateur.html">Espace utilisateur</a>
+    </div>
   </div>
-  <nav>
-    <a href="acceuil.html" class="active">Accueil</a>
-    <a href="covoiturages.html">Covoiturages</a>
-    <a href="espace-utilisateur.html">Mon profil</a>
-    <a href="contact.html">Contact</a>
-    <a href="connexion.html">Déconnexion</a>
-  </nav>
+  <header>
+    <div style="font-size:1.7em;font-weight:bold;">EcoRide</div>
+    <div>Le covoiturage écologique & économique</div>
+  </header>
   <main>
-    <section class="user-dashboard">
-      <div class="user-card">
-        <h2>Crédits disponibles</h2>
-        <div class="credits-badge" id="credits">20</div>
-        <div class="dashboard-actions">
-          <a href="paiement.html">Acheter des crédits</a>
-        </div>
-      </div>
-      <div class="user-card">
-        <h2>Prochain covoiturage</h2>
-        <div id="next-trip">
-          Aucun trajet réservé.<br>
-          <a href="covoiturages.html">Voir les covoiturages</a>
-        </div>
-      </div>
-      <div class="user-card">
-        <h2>Historique</h2>
-        <ul id="historique-covoiturages">
-          <li>Aucun covoiturage passé.</li>
-        </ul>
-      </div>
-    </section>
+    <h1>Connexion</h1>
+    <form>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Mot de passe" required>
+      <button type="submit">Se connecter</button>
+    </form>
+    <div class="link">Pas encore de compte ? <a href="inscription.html">Inscription</a></div>
   </main>
   <footer>
-    Contact : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a> &nbsp;|&nbsp;
+    Contact : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a> &nbsp;|&nbsp;
     <a href="mentions-legales.html">Mentions légales</a>
   </footer>
-  <script src="script.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById('dropdownMenu').classList.toggle('show');
+    }
+    // Ferme le menu si on clique ailleurs
+    window.onclick = function(event) {
+      if (!event.target.matches('.menu-btn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-menu");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>

@@ -7,9 +7,6 @@
   <style>
     body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f8f6; color: #222; min-height: 100vh; display: flex; flex-direction: column; }
     header { background: #219e65; color: #fff; padding: 22px 0 12px 0; text-align: center; }
-    nav { background: #19784b; display: flex; justify-content: center; gap: 40px; padding: 12px 0; }
-    nav a { color: #fff; text-decoration: none; font-weight: bold; transition: color 0.2s; }
-    nav a:hover { color: #c8ffd4; }
     main { flex: 1; max-width: 400px; margin: 40px auto; background: #fff; border-radius: 20px; box-shadow: 0 2px 20px #0001; padding: 32px; }
     h1 { color: #219e65; text-align: center; margin-bottom: 1.1em; }
     form { display: flex; flex-direction: column; gap: 18px; }
@@ -22,29 +19,66 @@
     footer { background: #19784b; color: #fff; text-align: center; padding: 18px 10px; font-size: 1em; margin-top: 40px; }
     footer a { color: #b9ffd2; text-decoration: underline; margin-left: 10px; font-weight: bold; }
     @media (max-width: 600px) { main { padding: 12px; } }
+    /* --- MENU 3 POINTS --- */
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      z-index: 1000;
+    }
+    .menu-btn {
+      background: none;
+      border: none;
+      font-size: 32px;
+      color: #fff; /* bouton trois points en blanc */
+      cursor: pointer;
+      outline: none;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      min-width: 170px;
+      margin-top: 10px;
+    }
+    .dropdown-menu a {
+      display: block;
+      color: #219e65;
+      padding: 12px 18px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s, color 0.2s;
+    }
+    .dropdown-menu a:hover {
+      background: #f2f2f2;
+      color: #19784b;
+    }
+    .show {
+      display: block;
+    }
   </style>
 </head>
 <body>
-  <nav>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="covoiturage.html">Covoiturage</a></li>
-    <li><a href="connexion.html">Connexion</a></li>
-    <li><a href="inscription.html">Inscription</a></li>
-    <li><a href="espace-utilisateur.html">Espace utilisateur</a></li>
-  </ul>
-</nav>
+  <!-- MENU 3 POINTS EN HAUT À DROITE -->
+  <div class="menu-container">
+    <button class="menu-btn" onclick="toggleMenu()">&#x22ee;</button>
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a href="index.html">Accueil</a>
+      <a href="covoiturages.html">Covoiturages</a>
+      <a href="contact.html">Contact</a>
+      <a href="connexion.html">Connexion</a>
+      <a href="inscription.html">Inscription</a>
+      <a href="espace-utilisateur.html">Espace utilisateur</a>
+    </div>
+  </div>
   <header>
     <div style="font-size:1.7em;font-weight:bold;">EcoRide</div>
     <div>Le covoiturage écologique & économique</div>
   </header>
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="covoiturages.html">Covoiturages</a>
-    <a href="contact.html">Contact</a>
-    <a href="connexion.html">Connexion</a>
-  </nav>
   <main>
     <h1>Connexion</h1>
     <form>
@@ -58,5 +92,22 @@
     Contact : <a href="mailto:contact@ecoride.fr">contact@ecoride.fr</a> &nbsp;|&nbsp;
     <a href="mentions-legales.html">Mentions légales</a>
   </footer>
+  <script>
+    function toggleMenu() {
+      document.getElementById('dropdownMenu').classList.toggle('show');
+    }
+    // Ferme le menu si on clique ailleurs
+    window.onclick = function(event) {
+      if (!event.target.matches('.menu-btn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-menu");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>
